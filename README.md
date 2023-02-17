@@ -2,6 +2,7 @@
 
 Just for my personal collections.
 
+1. [Jaeger](https://www.jaegertracing.io/) - [docker-compose.yml](jaeger/docker-compose.yml)
 1. [pgAdmin](https://www.pgadmin.org/) - [docker-compose.yml](pgadmin/docker-compose.yml)
 1. [RabbitMQ](https://www.rabbitmq.com/) - [docker-compose.yml](rabbitmq/docker-compose.yml)
 2. [Redis](https://redis.io/) - [docker-compose.yml](redis/docker-compose.yml)
