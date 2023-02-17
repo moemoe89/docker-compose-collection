@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  # neo4j
+  neo4j:
+    user: "1000:1000"
+    image: neo4j:latest
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - ./conf:/conf
+      - ./data:/data
+      - ./import:/import
+      - ./logs:/logs
+      - ./plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      # Raise memory limits
+      - NEO4J_server.memory.pagecache.size=1G
+      - NEO4J_server.memory.heap.initial_size=1G
+      - NEO4J_server.memory_heap_max__size=1G
+      # apoc plugin
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_PLUGINS=["graph-data-science", "apoc"]
+      - NEO4J_dbms_security_procedures_allowlist=gds.*, apoc.*
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*, apoc.*
