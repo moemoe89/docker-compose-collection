@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  # schemaspy
+  schemaspy:
+    image: schemaspy/schemaspy:snapshot
+    command: [
+      "-configFile",
+      "schemaspy.properties",
+      "-imageformat",
+      "svg"
+    ]
+    volumes:
+      - ./schemaspy.properties:/schemaspy.properties
+      - ./output:/output
+      - ./config:/config
