@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+  # timescaledb-master
+  timescaledb-master:
+    image: timescale/timescaledb:latest-pg14
+    restart: always
+    command: -c 'config_file=/etc/postgresql/postgresql.conf' -c 'hba_file=/etc/postgresql/pg_hba.conf'
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    volumes:
+      - ./primary/data:/var/lib/postgresql/data
+      - ./primary/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./primary/pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./primary/init.sh:/docker-entrypoint-initdb.d/init.sh
+    networks:
+      - fullstack
+  # timescaledb-slave
+  timescaledb-slave:
+    image: timescale/timescaledb:latest-pg14
+    restart: always
+    entrypoint: /entrypoint.sh
+    ports:
+      - "5433:5433"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    volumes:
+      - ./replica/data:/var/lib/postgresql/data
+      - ./replica/entrypoint.sh:/entrypoint.sh
+      - ./replica/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./replica/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    depends_on:
+      - timescaledb-master
+    networks:
+      - fullstack
+networks:
+  fullstack:
+    driver: bridge
