@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  # postgres
+  postgres:
+    image: postgres:15.2
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    volumes:
+      - ./data:/var/lib/postgresql/data
