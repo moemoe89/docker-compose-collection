@@ -2,7 +2,8 @@
 
 Just for my personal collections.
 
-1. [Dgraph](https://www.jaegertracing.io/) - [docker-compose.yml](drapgh/docker-compose.yml)
+1. [Apache Cassandra](https://cassandra.apache.org/_/index.html) - [docker-compose.yml](cassandra/docker-compose.yml)
+1. [Dgraph](https://dgraph.io/) - [docker-compose.yml](drapgh/docker-compose.yml)
 1. [Jaeger](https://www.jaegertracing.io/) - [docker-compose.yml](jaeger/docker-compose.yml)
 1. [Memcached](https://memcached.org/) - [docker-compose.yml](memcached/docker-compose.yml)
 1. [MongoDB](https://www.mongodb.com/) - [docker-compose.yml](mongodb/docker-compose.yml)

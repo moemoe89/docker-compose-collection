@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  # cassandra
+  cassandra:
+    image: cassandra:4.1.0
+    ports:
+      - "7000:7000"
+      - "9042:9042"
+    volumes:
+      - ./data:/var/lib/cassandra
