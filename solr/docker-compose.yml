@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  # memcached
+  memcached:
+    image: solr:9.1.1
+    ports:
+      - "8983:8983"
+    command:
+      - solr-precreate
+      - collection1
+    volumes:
+      - ./data:/var/solr/data
