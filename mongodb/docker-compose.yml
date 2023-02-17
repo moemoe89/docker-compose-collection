@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  # mongodb
+  mongodb:
+    image: mongo:4.4.6-bionic
+    environment:
+      MONGO_INITDB_DATABASE: test
+    volumes:
+      - ./db:/data/db
+    ports:
+      - 27017:27017
