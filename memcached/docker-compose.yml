@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  # memcached
+  memcached:
+    image: memcached:1.6.18
+    ports:
+      - "11211:11211"
+    volumes:
+      - ./data:/data
