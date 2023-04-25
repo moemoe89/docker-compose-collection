@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  # mongodb
+  mongodb:
+    image: mongo:4.4.6-bionic
+    environment:
+      MONGO_INITDB_DATABASE: test
+    volumes:
+      - ./db:/data/db
+    ports:
+      - 27017:27017
+    command: [ "--replSet", "rs", "--bind_ip_all", "--port", "27017" ]
+    healthcheck:
+      test: test $$(echo "rs.initiate({_id:'rs',members:[{_id:0,host:\"localhost:27017\"}]}).ok || rs.status().ok" | mongo --port 27017 --quiet) -eq 1
+      interval: 10s
+      start_period: 30s
